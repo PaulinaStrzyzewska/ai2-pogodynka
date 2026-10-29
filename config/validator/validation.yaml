@@ -1,0 +1,60 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                message: 'Enter city name.'
+                groups: [new, edit]
+            - Length:
+                max: 255
+                maxMessage: 'The name of the city can have a maximum of 255 characters.'
+                groups: [new, edit]
+
+        country:
+            - NotBlank:
+                message: 'Select country name.'
+                groups: [new, edit]
+            - Choice:
+                choices: ['PL', 'US', 'DE', 'FR', 'ES', 'IT', 'GB']
+                message: 'Select a country from the list.'
+                groups: [ new, edit ]
+
+        latitude:
+            - NotBlank:
+                message: 'Enter latitude.'
+                groups: [ new, edit ]
+            - Range:
+                min: -90
+                max: 90
+                notInRangeMessage: 'This value should be between -90 and 90.'
+                groups: [ new, edit ]
+
+        longitude:
+            - NotBlank:
+                message: 'Enter longitude.'
+                groups: [ new, edit ]
+            - Range:
+                min: -180
+                max: 180
+                notInRangeMessage: 'This value should be between -180 and 180.'
+                groups: [ new, edit ]
+
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotBlank:
+                message: 'Enter the date and time.'
+                groups: [new, edit]
+        celsius:
+            - NotBlank:
+                message: 'Enter the temperature.'
+                groups: [ new, edit ]
+            - Range:
+                min: -90
+                max: 70
+                notInRangeMessage: 'The temperature must be between -90 and 70 st. C.'
+                groups: [new, edit]
+        location:
+            - NotNull:
+                message: 'Çhoose a location.'
+                groups: [new, edit]
+

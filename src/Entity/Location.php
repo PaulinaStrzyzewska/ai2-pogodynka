@@ -31,7 +31,11 @@ class Location
     /**
      * @var Collection<int, Measurement>
      */
-    #[ORM\OneToMany(targetEntity: Measurement::class, mappedBy: 'location')]
+    #[ORM\OneToMany(
+        targetEntity: Measurement::class,
+        mappedBy: 'location',
+        cascade: ['remove']
+    )]
     private Collection $measurements;
 
     public function __construct()
@@ -61,7 +65,7 @@ class Location
         return $this->country;
     }
 
-    public function setCountry(string $country): static
+    public function setCountry(?string $country): static
     {
         $this->country = $country;
 
@@ -73,7 +77,7 @@ class Location
         return $this->latitude;
     }
 
-    public function setLatitude(string $latitude): static
+    public function setLatitude(?string $latitude): static
     {
         $this->latitude = $latitude;
 
@@ -85,7 +89,7 @@ class Location
         return $this->longitude;
     }
 
-    public function setLongitude(string $longitude): static
+    public function setLongitude(?string $longitude): static
     {
         $this->longitude = $longitude;
 
