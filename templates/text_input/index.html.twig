@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test TextInputController!{% endblock %}
+
+{% block body %}
+    <h1>Test Submission Form</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.message) }}
+        <button class="btn btn-primary">Submit</button>
+    {{ form_end(form) }}
+
+    {% if message is not null %}
+        <h2>Submitted Text:</h2>
+        <p>{{ message }}</p>
+        <p>{{ message|raw }}</p>
+    {% endif %}
+{% endblock %}
